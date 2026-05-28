@@ -1,0 +1,23 @@
+<svg width="400" height="225" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="225" fill="#1a1a1a"/>
+  <g opacity="0.1">
+    <line x1="0" y1="45" x2="400" y2="45" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="0" y1="90" x2="400" y2="90" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="0" y1="135" x2="400" y2="135" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="0" y1="180" x2="400" y2="180" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="80" y1="0" x2="80" y2="225" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="160" y1="0" x2="160" y2="225" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="240" y1="0" x2="240" y2="225" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="320" y1="0" x2="320" y2="225" stroke="#4d94ff" stroke-width="0.5"/>
+  </g>
+  <rect x="50" y="70" width="80" height="80" rx="4" fill="none" stroke="#4d94ff" stroke-width="2" opacity="0.3"/>
+  <rect x="270" y="70" width="80" height="80" rx="4" fill="none" stroke="#4d94ff" stroke-width="2" opacity="0.3"/>
+  <circle cx="90" cy="110" r="8" fill="#4d94ff" opacity="0.6"/>
+  <circle cx="310" cy="110" r="8" fill="#4d94ff" opacity="0.6"/>
+  <path d="M130 110 L270 110" stroke="#4d94ff" stroke-width="3" opacity="0.5" stroke-dasharray="5,5"/>
+  <path d="M150 95 L180 110 L150 125 Z" fill="#4d94ff" opacity="0.4"/>
+  <path d="M220 95 L250 110 L220 125 Z" fill="#4d94ff" opacity="0.4"/>
+  <text x="90" y="60" font-family="monospace" font-size="10" fill="#4d94ff" text-anchor="middle" opacity="0.5">CLIENT</text>
+  <text x="310" y="60" font-family="monospace" font-size="10" fill="#4d94ff" text-anchor="middle" opacity="0.5">SERVER</text>
+  <text x="200" y="205" font-family="monospace" font-size="12" fill="#4d94ff" text-anchor="middle" opacity="0.6">NETWORK OPT</text>
+</svg>

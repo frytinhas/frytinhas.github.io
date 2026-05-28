@@ -1,0 +1,24 @@
+<svg width="400" height="225" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="225" fill="#1a1a1a"/>
+  <g opacity="0.1">
+    <line x1="0" y1="45" x2="400" y2="45" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="0" y1="90" x2="400" y2="90" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="0" y1="135" x2="400" y2="135" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="0" y1="180" x2="400" y2="180" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="80" y1="0" x2="80" y2="225" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="160" y1="0" x2="160" y2="225" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="240" y1="0" x2="240" y2="225" stroke="#4d94ff" stroke-width="0.5"/>
+    <line x1="320" y1="0" x2="320" y2="225" stroke="#4d94ff" stroke-width="0.5"/>
+  </g>
+  <rect x="80" y="50" width="60" height="40" rx="4" fill="#4d94ff" opacity="0.2"/>
+  <rect x="170" y="50" width="60" height="40" rx="4" fill="#4d94ff" opacity="0.2"/>
+  <rect x="260" y="50" width="60" height="40" rx="4" fill="#4d94ff" opacity="0.2"/>
+  <rect x="80" y="130" width="60" height="40" rx="4" fill="#4d94ff" opacity="0.15"/>
+  <rect x="170" y="130" width="60" height="40" rx="4" fill="#4d94ff" opacity="0.15"/>
+  <rect x="260" y="130" width="60" height="40" rx="4" fill="#4d94ff" opacity="0.15"/>
+  <path d="M110 90 L110 130 M200 90 L200 130 M290 90 L290 130" stroke="#4d94ff" stroke-width="2" opacity="0.4"/>
+  <circle cx="110" cy="110" r="8" fill="#4d94ff" opacity="0.6"/>
+  <circle cx="200" cy="110" r="8" fill="#4d94ff" opacity="0.6"/>
+  <circle cx="290" cy="110" r="8" fill="#4d94ff" opacity="0.6"/>
+  <text x="200" y="205" font-family="monospace" font-size="12" fill="#4d94ff" text-anchor="middle" opacity="0.6">ABILITY SYSTEM</text>
+</svg>

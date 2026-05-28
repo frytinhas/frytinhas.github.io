@@ -28,6 +28,7 @@ function getProjectField(project: Project, field: keyof Project, lang: Language)
 export function ProjectDetail({ project }: ProjectDetailProps) {
   const navigate = useNavigate()
   const { language } = useLanguage()
+  const hasProjectLink = Boolean(project.link && project.link !== 'https://github.com')
   
   const title = getProjectField(project, 'title', language)
   const description = getProjectField(project, 'description', language)
@@ -60,15 +61,17 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
             <ThemeSwitcher />
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                {t(language, 'projectDetail.viewProject')}
-              </Button>
-            </a>
+            {hasProjectLink && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                  {t(language, 'projectDetail.viewProject')}
+                </Button>
+              </a>
+            )}
           </div>
         </div>
       </div>

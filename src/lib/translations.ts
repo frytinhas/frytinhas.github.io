@@ -3,7 +3,9 @@ import { Language } from '@/contexts/LanguageContext'
 export const translations = {
   en: {
     nav: {
+      summary: 'Summary',
       projects: 'Projects',
+      plugins: 'Plugins',
       skills: 'Skills',
       articles: 'Articles',
       testimonials: 'Testimonials',
@@ -12,10 +14,17 @@ export const translations = {
     hero: {
       badge: 'Available for new opportunities',
       title: 'José Gabriel Nunes',
-      subtitle: 'Unreal Engine & Unity Gameplay Programmer',
-      description: 'Building high-performance gameplay systems with C++ and C# for immersive gaming experiences',
+      subtitle: 'Gameplay Engineer · Unreal Engine Multiplayer & Systems',
+      description: 'I build gameplay systems, multiplayer features, UI workflows, reusable plugins, and scalable architectures using Unreal Engine, C++, Blueprint, GAS, and EOS.',
       cta: 'View Projects',
+      github: 'GitHub',
+      linkedin: 'LinkedIn',
+      resume: 'Download Resume',
       contact: 'Get in Touch',
+    },
+    summary: {
+      title: 'Professional Summary',
+      description: 'Gameplay Engineer focused on clean architecture, server-authoritative multiplayer systems, and reusable Unreal Engine tooling for production game teams.',
     },
     about: {
       title: 'About',
@@ -26,7 +35,12 @@ export const translations = {
     },
     projects: {
       title: 'Featured Projects',
-      subtitle: 'Technical implementations and case studies',
+      subtitle: 'Frontline, EndZ, and Imóbi are positioned as the main portfolio pieces for gameplay, multiplayer, and product versatility.',
+      primaryProject: 'Primary Showcase',
+      contributions: 'Contributions',
+      highlights: 'Technical Highlights',
+      caseStudy: 'View Case Study',
+      demo: 'View Demo',
       all: 'All',
       viewDetails: 'View Details',
       categories: {
@@ -37,6 +51,10 @@ export const translations = {
         systems: 'Systems',
         unity: 'Unity',
       },
+    },
+    plugins: {
+      title: 'Unreal Engine Plugins & Tools',
+      subtitle: 'Secondary supporting work that demonstrates reusable systems and technical product thinking.',
     },
     skills: {
       title: 'Technical Skills',
@@ -108,7 +126,9 @@ export const translations = {
   },
   pt: {
     nav: {
+      summary: 'Resumo',
       projects: 'Projetos',
+      plugins: 'Plugins',
       skills: 'Habilidades',
       articles: 'Artigos',
       testimonials: 'Depoimentos',
@@ -117,10 +137,17 @@ export const translations = {
     hero: {
       badge: 'Disponível para novas oportunidades',
       title: 'José Gabriel Nunes',
-      subtitle: 'Programador de Gameplay Unreal Engine & Unity',
-      description: 'Desenvolvendo sistemas de gameplay de alta performance com C++ e C# para experiências imersivas',
+      subtitle: 'Gameplay Engineer · Multiplayer e Sistemas em Unreal Engine',
+      description: 'Construo sistemas de gameplay, features multiplayer, fluxos de UI, plugins reutilizáveis e arquiteturas escaláveis usando Unreal Engine, C++, Blueprint, GAS e EOS.',
       cta: 'Ver Projetos',
+      github: 'GitHub',
+      linkedin: 'LinkedIn',
+      resume: 'Baixar Currículo',
       contact: 'Entre em Contato',
+    },
+    summary: {
+      title: 'Resumo Profissional',
+      description: 'Gameplay Engineer com foco em arquitetura limpa, sistemas multiplayer server-authoritative e tooling reutilizável em Unreal Engine para equipes de produção.',
     },
     about: {
       title: 'Sobre',
@@ -131,7 +158,12 @@ export const translations = {
     },
     projects: {
       title: 'Projetos em Destaque',
-      subtitle: 'Implementações técnicas e estudos de caso',
+      subtitle: 'Frontline, EndZ e Imóbi aparecem como peças principais do portfólio para gameplay, multiplayer e versatilidade de produto.',
+      primaryProject: 'Projeto Principal',
+      contributions: 'Contribuições',
+      highlights: 'Destaques Técnicos',
+      caseStudy: 'Ver Case Study',
+      demo: 'Ver Demo',
       all: 'Todos',
       viewDetails: 'Ver Detalhes',
       categories: {
@@ -142,6 +174,10 @@ export const translations = {
         systems: 'Sistemas',
         unity: 'Unity',
       },
+    },
+    plugins: {
+      title: 'Plugins e Ferramentas Unreal Engine',
+      subtitle: 'Trabalho complementar que reforça criação de sistemas reutilizáveis e visão técnica de produto.',
     },
     skills: {
       title: 'Habilidades Técnicas',

@@ -1,6 +1,6 @@
-import project1 from '@/assets/images/project-1.svg'
-import project2 from '@/assets/images/project-2.svg'
-import project3 from '@/assets/images/project-3.svg'
+import project1 from '../../ext/frontline_.png'
+import project2 from '../../ext/endz_profile.jpg'
+import project3 from '../../ext/imóbi.png'
 
 export type LocalizedString = {
   en: string
@@ -37,7 +37,7 @@ export interface SkillCategory {
 
 export const profileLinks = {
   github: 'https://github.com/frytinhas',
-  linkedin: 'https://www.linkedin.com/in/jos%C3%A9-gabriel-nunes-246b09278/',
+  linkedin: 'https://www.linkedin.com/in/jg-nunes.',
   email: 'mailto:contactfrytinhas1910@gmail.com',
   resumeUrl: undefined as string | undefined,
 }

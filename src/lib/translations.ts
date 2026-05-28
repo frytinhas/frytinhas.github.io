@@ -4,6 +4,7 @@ export const translations = {
   en: {
     nav: {
       summary: 'Summary',
+      portfolio: 'Portfolio',
       projects: 'Projects',
       plugins: 'Plugins',
       skills: 'Skills',
@@ -127,6 +128,7 @@ export const translations = {
   pt: {
     nav: {
       summary: 'Resumo',
+      portfolio: 'Portfólio',
       projects: 'Projetos',
       plugins: 'Plugins',
       skills: 'Habilidades',

@@ -33,10 +33,43 @@ export function Home() {
   const { language } = useLanguage()
   const [showScrollToTop, setShowScrollToTop] = useState(false)
 
+  const scrollToSection = useCallback((sectionId: string) => {
+    const resolvedSection = sectionId === 'projects' ? 'portfolio' : sectionId
+    const target = document.getElementById(resolvedSection)
+    if (!target) {
+      return
+    }
+
+    if (resolvedSection === 'portfolio') {
+      const nextUrl = `${window.location.pathname}${window.location.search}#portfolio`
+      window.history.replaceState(null, '', nextUrl)
+    }
+
+    target.scrollIntoView({ behavior: 'smooth' })
+  }, [])
+
   useEffect(() => {
     const handleScroll = () => setShowScrollToTop(window.scrollY > 500)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const handleHashNavigation = () => {
+      const hash = window.location.hash.toLowerCase()
+      if (hash === '#portfolio' || hash === '#projects') {
+        const portfolioSection = document.getElementById('portfolio')
+        if (portfolioSection) {
+          const nextUrl = `${window.location.pathname}${window.location.search}#portfolio`
+          window.history.replaceState(null, '', nextUrl)
+          portfolioSection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+    }
+
+    handleHashNavigation()
+    window.addEventListener('hashchange', handleHashNavigation)
+    return () => window.removeEventListener('hashchange', handleHashNavigation)
   }, [])
 
   const scrollToTop = useCallback(() => {
@@ -44,9 +77,94 @@ export function Home() {
   }, [])
 
   const navItems = useMemo(
-    () => ['projects', 'plugins', 'skills', 'contact'] as const,
+    () => ['portfolio', 'plugins', 'skills', 'contact'] as const,
     []
   )
+
+  const frontlineProject = featuredProjects.find((project) => project.id === 'frontline')
+  const imobiProject = featuredProjects.find((project) => project.id === 'imobi')
+  const endzProject = featuredProjects.find((project) => project.id === 'endz')
+
+  const renderProjectCard = (project: (typeof featuredProjects)[number], isPrimary = false) => {
+    const links = [
+      project.caseStudyUrl
+        ? { href: project.caseStudyUrl, label: t(language, 'projects.caseStudy') }
+        : null,
+      project.demoUrl ? { href: project.demoUrl, label: t(language, 'projects.demo') } : null,
+    ].filter(Boolean) as { href: string; label: string }[]
+
+    return (
+      <Card className="h-full p-6 bg-card/60 backdrop-blur-sm border-border hover:border-primary/40 transition-all duration-300">
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <h3 className="text-2xl font-bold mb-2 text-foreground">{localize(project.title, language)}</h3>
+            <p className="text-sm text-accent font-medium">{localize(project.subtitle, language)}</p>
+          </div>
+          {isPrimary && (
+            <Badge className="bg-primary/20 text-accent border-primary/30">
+              {t(language, 'projects.primaryProject')}
+            </Badge>
+          )}
+        </div>
+
+        {project.media?.image && (
+          <div className="mb-5 rounded-md border border-border/70 bg-background/70 p-4">
+            <div className="h-52 md:h-56 w-full rounded-md border border-border/60 bg-gradient-to-br from-primary/5 to-accent/5 flex items-center justify-center overflow-hidden">
+              <img
+                src={project.media.image}
+                alt={localize(project.media.alt, language)}
+                className="max-h-full max-w-full object-contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        )}
+
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          {localize(project.description, language)}
+        </p>
+
+        <div className="mb-6">
+          <h4 className="text-sm uppercase tracking-wider text-muted-foreground mb-3">
+            {t(language, 'projects.contributions')}
+          </h4>
+          <ul className="space-y-2 text-sm text-foreground/90">
+            {project.contributions.map((item, contributionIndex) => (
+              <li key={contributionIndex} className="flex gap-2">
+                <span className="text-primary mt-0.5">•</span>
+                <span>{localize(item, language)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-sm uppercase tracking-wider text-muted-foreground mb-3">
+            {t(language, 'projects.highlights')}
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {project.highlights.map((highlight) => (
+              <Badge key={highlight} variant="secondary" className="bg-primary/10 text-accent border-primary/20">
+                {highlight}
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        {links.length > 0 && (
+          <div className="pt-6 mt-6 border-t border-border/70 flex flex-wrap gap-3">
+            {links.map((link) => (
+              <Button key={link.href} variant="outline" asChild>
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                </a>
+              </Button>
+            ))}
+          </div>
+        )}
+      </Card>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
@@ -72,7 +190,7 @@ export function Home() {
             {navItems.map((item) => (
               <button
                 key={item}
-                onClick={() => document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToSection(item)}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {t(language, `nav.${item}`)}
@@ -142,7 +260,7 @@ export function Home() {
             <Button
               size="lg"
               className="group"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => scrollToSection('portfolio')}
             >
               <span>{t(language, 'hero.cta')}</span>
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -197,7 +315,8 @@ export function Home() {
         </div>
       </section>
 
-      <section id="projects" className="py-24 px-6 relative overflow-hidden">
+      <section id="portfolio" className="py-24 px-6 relative overflow-hidden scroll-mt-24">
+        <span id="projects" className="block scroll-mt-24 h-0" aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(153,180,255,0.08),transparent_50%)]" />
 
@@ -211,94 +330,24 @@ export function Home() {
             <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">{t(language, 'projects.title')}</h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-3xl">{t(language, 'projects.subtitle')}</p>
 
-            <div className="grid gap-6 lg:grid-cols-3">
-              {featuredProjects.map((project, index) => {
-                const links = [
-                  project.caseStudyUrl
-                    ? { href: project.caseStudyUrl, label: t(language, 'projects.caseStudy') }
-                    : null,
-                  project.demoUrl ? { href: project.demoUrl, label: t(language, 'projects.demo') } : null,
-                ].filter(Boolean) as { href: string; label: string }[]
-
-                return (
-                  <motion.div
-                    key={project.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.5, delay: index * 0.08 }}
-                    className={index === 0 ? 'lg:col-span-2' : ''}
-                  >
-                    <Card className="h-full p-6 bg-card/60 backdrop-blur-sm border-border hover:border-primary/40 transition-all duration-300">
-                      <div className="flex items-start justify-between gap-4 mb-4">
-                        <div>
-                          <h3 className="text-2xl font-bold mb-2 text-foreground">{localize(project.title, language)}</h3>
-                          <p className="text-sm text-accent font-medium">{localize(project.subtitle, language)}</p>
-                        </div>
-                        {index === 0 && (
-                          <Badge className="bg-primary/20 text-accent border-primary/30">
-                            {t(language, 'projects.primaryProject')}
-                          </Badge>
-                        )}
-                      </div>
-
-                      {project.media?.image && (
-                        <div className="mb-5 overflow-hidden rounded-md border border-border/70">
-                          <img
-                            src={project.media.image}
-                            alt={localize(project.media.alt, language)}
-                            className="w-full h-40 object-cover"
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
-
-                      <p className="text-muted-foreground leading-relaxed mb-6">
-                        {localize(project.description, language)}
-                      </p>
-
-                      <div className="mb-6">
-                        <h4 className="text-sm uppercase tracking-wider text-muted-foreground mb-3">
-                          {t(language, 'projects.contributions')}
-                        </h4>
-                        <ul className="space-y-2 text-sm text-foreground/90">
-                          {project.contributions.map((item, contributionIndex) => (
-                            <li key={contributionIndex} className="flex gap-2">
-                              <span className="text-primary mt-0.5">•</span>
-                              <span>{localize(item, language)}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div>
-                        <h4 className="text-sm uppercase tracking-wider text-muted-foreground mb-3">
-                          {t(language, 'projects.highlights')}
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.highlights.map((highlight) => (
-                            <Badge key={highlight} variant="secondary" className="bg-primary/10 text-accent border-primary/20">
-                              {highlight}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-
-                      {links.length > 0 && (
-                        <div className="pt-6 mt-6 border-t border-border/70 flex flex-wrap gap-3">
-                          {links.map((link) => (
-                            <Button key={link.href} variant="outline" asChild>
-                              <a href={link.href} target="_blank" rel="noopener noreferrer">
-                                {link.label}
-                              </a>
-                            </Button>
-                          ))}
-                        </div>
-                      )}
-                    </Card>
-                  </motion.div>
-                )
-              })}
+            <div className="space-y-6">
+              <div className="grid gap-6 md:grid-cols-2">
+                {frontlineProject && (
+                  <article id="portfolio-frontline" className="scroll-mt-24">
+                    {renderProjectCard(frontlineProject, true)}
+                  </article>
+                )}
+                {imobiProject && (
+                  <article id="portfolio-imobi" className="scroll-mt-24">
+                    {renderProjectCard(imobiProject)}
+                  </article>
+                )}
+              </div>
+              {endzProject && (
+                <article id="portfolio-endz" className="scroll-mt-24">
+                  {renderProjectCard(endzProject)}
+                </article>
+              )}
             </div>
           </motion.div>
         </div>

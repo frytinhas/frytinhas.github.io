@@ -85,7 +85,12 @@ export function Home() {
   const imobiProject = featuredProjects.find((project) => project.id === 'imobi')
   const endzProject = featuredProjects.find((project) => project.id === 'endz')
 
-  const renderProjectCard = (project: (typeof featuredProjects)[number], isPrimary = false) => {
+  const renderProjectCard = (
+    project: (typeof featuredProjects)[number],
+    options?: { isPrimary?: boolean; imageVariant?: 'square' | 'wide' }
+  ) => {
+    const isPrimary = options?.isPrimary ?? false
+    const imageVariant = options?.imageVariant ?? 'square'
     const links = [
       project.caseStudyUrl
         ? { href: project.caseStudyUrl, label: t(language, 'projects.caseStudy') }
@@ -109,7 +114,11 @@ export function Home() {
 
         {project.media?.image && (
           <div className="mb-5 rounded-md border border-border/70 bg-background/70 p-4">
-            <div className="h-52 md:h-56 w-full rounded-md border border-border/60 bg-gradient-to-br from-primary/5 to-accent/5 flex items-center justify-center overflow-hidden">
+            <div
+              className={`w-full rounded-md border border-border/60 bg-gradient-to-br from-primary/5 to-accent/5 flex items-center justify-center overflow-hidden ${
+                imageVariant === 'wide' ? 'aspect-[16/7]' : 'aspect-square'
+              }`}
+            >
               <img
                 src={project.media.image}
                 alt={localize(project.media.alt, language)}
@@ -334,18 +343,18 @@ export function Home() {
               <div className="grid gap-6 md:grid-cols-2">
                 {frontlineProject && (
                   <article id="portfolio-frontline" className="scroll-mt-24">
-                    {renderProjectCard(frontlineProject, true)}
+                    {renderProjectCard(frontlineProject, { isPrimary: true, imageVariant: 'square' })}
                   </article>
                 )}
                 {imobiProject && (
                   <article id="portfolio-imobi" className="scroll-mt-24">
-                    {renderProjectCard(imobiProject)}
+                    {renderProjectCard(imobiProject, { imageVariant: 'square' })}
                   </article>
                 )}
               </div>
               {endzProject && (
                 <article id="portfolio-endz" className="scroll-mt-24">
-                  {renderProjectCard(endzProject)}
+                  {renderProjectCard(endzProject, { imageVariant: 'wide' })}
                 </article>
               )}
             </div>

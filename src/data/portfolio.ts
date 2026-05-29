@@ -1,5 +1,5 @@
 import project1 from '../../ext/frontline_.png'
-import project2 from '../../ext/endz_profile.jpg'
+import project2 from '../../ext/endz_.png'
 import project3 from '../../ext/imóbi.png'
 
 export type LocalizedString = {

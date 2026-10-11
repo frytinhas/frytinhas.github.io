@@ -26,7 +26,7 @@ type PortfolioCopy = {
   navigation: { about: string; work: string; experience: string; expertise: string; contact: string };
   languageLabel: string;
   switchLanguage: string;
-  hero: { headline: string; intro: string; projects: string; contact: string };
+  hero: { headline: string; intro: string; roleIntro: string; projects: string; contact: string };
   projects: { title: string; intro: string; visit: string; otherLabel: string };
   experiences: { title: string; intro: string };
   expertise: { title: string; groups: { label: string; items: string[] }[] };
@@ -54,7 +54,8 @@ export const portfolio: Record<Locale, PortfolioCopy> = {
     switchLanguage: 'Português',
     hero: {
       headline: 'José Nunes',
-      intro: 'I am a Gameplay Engineer with 5+ years of experience building production-ready gameplay systems, reusable tools, and mobile products. I work as Lead Developer & Game Designer at Neo Soft Entertainment.',
+      intro: 'I am a Gameplay Engineer with 5+ years of experience building production-ready gameplay systems, reusable tools, and mobile products.',
+      roleIntro: 'I work as Lead Developer & Game Designer at Neo Soft Entertainment.',
       projects: 'Selected work',
       contact: 'Get in touch',
     },
@@ -106,7 +107,8 @@ export const portfolio: Record<Locale, PortfolioCopy> = {
     switchLanguage: 'English',
     hero: {
       headline: 'José Nunes',
-      intro: 'Sou Gameplay Engineer com mais de 5 anos de experiência criando sistemas de gameplay prontos para produção, ferramentas reutilizáveis e produtos mobile. Trabalho como Lead Developer & Game Designer na Neo Soft Entertainment.',
+      intro: 'Sou Gameplay Engineer com mais de 5 anos de experiência criando sistemas de gameplay prontos para produção, ferramentas reutilizáveis e produtos mobile.',
+      roleIntro: 'Trabalho como Lead Developer & Game Designer na Neo Soft Entertainment.',
       projects: 'Projetos selecionados',
       contact: 'Entre em contato',
     },

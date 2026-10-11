@@ -42,6 +42,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-inner { position: relative; text-align: center; }
 .hero h1 { max-width: 860px; margin: 0 auto; letter-spacing: -.065em; font-size: clamp(3.2rem, 8vw, 7rem); line-height: .96; font-weight: 800; }
 .hero-intro { font-size: clamp(1rem, 1.8vw, 1.25rem); max-width: 650px; margin: 2rem auto 0; color: #c7d6e9; }
+.hero-intro span { display: block; }
 .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 2.25rem; }
 .button { display: inline-flex; gap: .8rem; align-items: center; min-height: 47px; padding: .75rem 1rem; font-size: .78rem; font-weight: 800; text-decoration: none; text-transform: uppercase; letter-spacing: .045em; }
 .button-primary { color: var(--navy); background: var(--gold); }

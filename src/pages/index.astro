@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PortfolioPage from '../components/PortfolioPage.astro';
+import { portfolio } from '../data/portfolio';
+const copy = portfolio.en;
+---
+<BaseLayout locale="en" title={copy.pageTitle} description={copy.description}><PortfolioPage locale="en" /></BaseLayout>

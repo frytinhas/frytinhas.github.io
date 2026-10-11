@@ -1,12 +1,17 @@
 {
-    "name": "app",
-    "version": "1.0.0",
-    "main": "index.js",
-    "type": "module",
-    "scripts": {      
-      "start": "node proxy.js"
-    },
-    "author": "",
-    "license": "MIT",
-    "description": "A wrapper for deploying to the GitHub runtime"
+  "name": "jose-nunes-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^5.16.4",
+    "typescript": "^5.7.3"
   }
+}

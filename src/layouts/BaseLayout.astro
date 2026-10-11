@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import type { Locale } from '../data/portfolio';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+}
+
+const { locale, title, description } = Astro.props;
+const canonicalPath = locale === 'pt' ? '/pt/' : '/';
+const alternatePath = locale === 'pt' ? '/' : '/pt/';
+---
+
+<!doctype html>
+<html lang={locale === 'pt' ? 'pt-BR' : 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#081d42" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(canonicalPath, Astro.site)} />
+    <link rel="alternate" hreflang={locale === 'pt' ? 'en' : 'pt-BR'} href={new URL(alternatePath, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+    <title>{title}</title>
+  </head>
+  <body data-locale={locale}>
+    <a class="skip-link" href="#content">{locale === 'pt' ? 'Pular para o conteúdo' : 'Skip to content'}</a>
+    <slot />
+    <script is:inline>
+      const preferenceKey = 'jose-nunes-locale';
+      document.querySelectorAll('[data-language-switch]').forEach((link) => {
+        link.addEventListener('click', () => localStorage.setItem(preferenceKey, link.dataset.languageSwitch));
+      });
+
+      if (document.body.dataset.locale === 'en' && window.location.pathname === '/') {
+        const savedLocale = localStorage.getItem(preferenceKey);
+        const browserLanguages = navigator.languages || [navigator.language];
+        const wantsPortuguese = browserLanguages.some((language) => language?.toLowerCase().startsWith('pt'));
+        if (savedLocale === 'pt' || (!savedLocale && wantsPortuguese)) window.location.replace('/pt/');
+      }
+    </script>
+  </body>
+</html>

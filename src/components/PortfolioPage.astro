@@ -35,12 +35,8 @@ const socials = {
       <i class="line line-a"></i><i class="line line-b"></i><i class="line line-c"></i>
     </div>
     <div class="container hero-inner">
-      <p class="eyebrow"><span></span>{copy.hero.label}</p>
       <h1 id="hero-title">{copy.hero.headline}</h1>
       <p class="hero-intro">{copy.hero.intro}</p>
-      <ul class="hero-facts" aria-label={locale === 'pt' ? 'Especialidades' : 'Specialties'}>
-        {copy.hero.facts.map((fact) => <li>{fact}</li>)}
-      </ul>
       <div class="hero-actions">
         <a class="button button-primary" href="#work">{copy.hero.projects}<span aria-hidden="true">↓</span></a>
         <a class="button button-quiet" href="#contact">{copy.hero.contact}<span aria-hidden="true">↗</span></a>
@@ -50,7 +46,6 @@ const socials = {
 
   <section id="work" class="section container" aria-labelledby="work-title">
     <div class="section-heading">
-      <p class="eyebrow ink"><span></span>{copy.projects.label}</p>
       <h2 id="work-title">{copy.projects.title}</h2>
       <p>{copy.projects.intro}</p>
     </div>
@@ -99,7 +94,6 @@ const socials = {
   <section id="experience" class="section section-dark" aria-labelledby="experience-title">
     <div class="container">
       <div class="section-heading light">
-        <p class="eyebrow"><span></span>{copy.experiences.label}</p>
         <h2 id="experience-title">{copy.experiences.title}</h2>
         <p>{copy.experiences.intro}</p>
       </div>
@@ -114,7 +108,6 @@ const socials = {
 
   <section id="expertise" class="section container" aria-labelledby="expertise-title">
     <div class="section-heading">
-      <p class="eyebrow ink"><span></span>{copy.expertise.label}</p>
       <h2 id="expertise-title">{copy.expertise.title}</h2>
     </div>
     <div class="expertise-grid">
@@ -124,7 +117,7 @@ const socials = {
 
   <section id="contact" class="contact-section" aria-labelledby="contact-title">
     <div class="container contact-inner">
-      <div><p class="eyebrow"><span></span>{copy.contact.label}</p><h2 id="contact-title">{copy.contact.title}</h2><p>{copy.contact.intro}</p></div>
+      <div><h2 id="contact-title">{copy.contact.title}</h2><p>{copy.contact.intro}</p></div>
       <div class="contact-links">
         <a href={socials.email}>{copy.contact.email}<span>contactfrytinhas1910@gmail.com</span></a>
         <a href={socials.linkedin} target="_blank" rel="noopener noreferrer">{copy.contact.linkedin}<span>/in/jg-nunes</span></a>

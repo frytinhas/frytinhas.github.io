@@ -47,7 +47,7 @@ const external = {
 
 export const portfolio: Record<Locale, PortfolioCopy> = {
   en: {
-    pageTitle: 'José Nunes — Gameplay Engineer',
+    pageTitle: 'José Nunes - Gameplay Engineer',
     description: 'Gameplay Engineer building scalable systems, tools, and products with Unreal Engine and beyond.',
     navigation: { about: 'About', work: 'Work', experience: 'Experience', expertise: 'Expertise', contact: 'Contact' },
     languageLabel: 'Language',
@@ -100,7 +100,7 @@ export const portfolio: Record<Locale, PortfolioCopy> = {
     ],
   },
   pt: {
-    pageTitle: 'José Nunes — Gameplay Engineer',
+    pageTitle: 'José Nunes - Gameplay Engineer',
     description: 'Gameplay Engineer que desenvolve sistemas escaláveis, ferramentas e produtos com Unreal Engine e além.',
     navigation: { about: 'Sobre', work: 'Projetos', experience: 'Experiência', expertise: 'Conhecimento', contact: 'Contato' },
     languageLabel: 'Idioma',

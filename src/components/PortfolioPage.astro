@@ -18,7 +18,9 @@ const socials = {
 ---
 
 <header class="site-header container">
-  <a class="brand" href={locale === 'pt' ? '/pt/' : '/'} aria-label="José Nunes home">JN<span aria-hidden="true">.</span></a>
+  <a class="brand" href={locale === 'pt' ? '/pt/' : '/'} aria-label="José Nunes home">
+    <img src="/jn-transparent-white.svg" alt="José Nunes" />
+  </a>
   <nav aria-label={locale === 'pt' ? 'Navegação principal' : 'Primary navigation'}>
     <a href="#work">{copy.navigation.work}</a>
     <a href="#experience">{copy.navigation.experience}</a>

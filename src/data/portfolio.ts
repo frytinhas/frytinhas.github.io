@@ -47,8 +47,8 @@ const external = {
 
 export const portfolio: Record<Locale, PortfolioCopy> = {
   en: {
-    pageTitle: 'José Nunes - Gameplay Engineer',
-    description: 'Gameplay Engineer building scalable systems, tools, and products with Unreal Engine and beyond.',
+    pageTitle: 'José Nunes (frytinhas) - Gameplay Engineer',
+    description: 'José Gabriel Jesuino Nunes, known as José Nunes and frytinhas. Gameplay Engineer building gameplay systems, tools, and products with Unreal Engine and C++.',
     navigation: { about: 'About', work: 'Work', experience: 'Experience', expertise: 'Expertise', contact: 'Contact' },
     languageLabel: 'Language',
     switchLanguage: 'Português',
@@ -99,8 +99,8 @@ export const portfolio: Record<Locale, PortfolioCopy> = {
     ],
   },
   pt: {
-    pageTitle: 'José Nunes - Gameplay Engineer',
-    description: 'Gameplay Engineer que desenvolve sistemas escaláveis, ferramentas e produtos com Unreal Engine e além.',
+    pageTitle: 'José Nunes (frytinhas) - Engenheiro de Gameplay',
+    description: 'José Gabriel Jesuino Nunes, conhecido como José Nunes e frytinhas. Engenheiro de Gameplay que cria sistemas, ferramentas e produtos com Unreal Engine e C++.',
     navigation: { about: 'Sobre', work: 'Projetos', experience: 'Experiência', expertise: 'Conhecimento', contact: 'Contato' },
     languageLabel: 'Idioma',
     switchLanguage: 'English',

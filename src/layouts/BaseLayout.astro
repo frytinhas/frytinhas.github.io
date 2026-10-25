@@ -10,7 +10,26 @@ interface Props {
 
 const { locale, title, description } = Astro.props;
 const canonicalPath = locale === 'pt' ? '/pt/' : '/';
-const alternatePath = locale === 'pt' ? '/' : '/pt/';
+const canonicalUrl = new URL(canonicalPath, Astro.site).href;
+const personId = new URL('/#person', Astro.site).href;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${canonicalUrl}#profile`,
+  url: canonicalUrl,
+  name: title,
+  description,
+  inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': personId,
+    name: 'José Gabriel Jesuino Nunes',
+    alternateName: ['José Nunes', 'Jose Nunes', 'Jose Gabriel Jesuino Nunes', 'frytinhas'],
+    url: new URL('/', Astro.site).href,
+    jobTitle: 'Gameplay Engineer',
+    sameAs: ['https://github.com/frytinhas', 'https://www.linkedin.com/in/jg-nunes'],
+  },
+};
 ---
 
 <!doctype html>
@@ -23,10 +42,12 @@ const alternatePath = locale === 'pt' ? '/' : '/pt/';
     <meta name="google-site-verification" content="iFyQ6aaCsIXj-QI6NJnuDjNDuVJiVKDUHZ4FQyEoOgM" />
     <link rel="icon" type="image/svg+xml" href="/jn-favicon.svg" />
     <link rel="icon" type="image/png" href="/jn-favicon.png" />
-    <link rel="canonical" href={new URL(canonicalPath, Astro.site)} />
-    <link rel="alternate" hreflang={locale === 'pt' ? 'en' : 'pt-BR'} href={new URL(alternatePath, Astro.site)} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={new URL('/', Astro.site)} />
+    <link rel="alternate" hreflang="pt-BR" href={new URL('/pt/', Astro.site)} />
     <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')} />
   </head>
   <body data-locale={locale}>
     <a class="skip-link" href="#content">{locale === 'pt' ? 'Pular para o conteúdo' : 'Skip to content'}</a>
